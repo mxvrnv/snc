@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body {
+				margin: 0;
+			}
+
+			.input, .result, button {
+				width: 100%;
+				height: 25%;
+				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 60vw;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="subtract()">-</button>
+		<span class="input"></span>
+		<button onclick="add()">+</button>
+		<span class="result"></span>
+		<script>
+			const resultElement = document.querySelector('.result');
+			const inputContainer = document.querySelector('.input');
+			let input = 150;
+			function subtract() {
+				input--;
+				update();
+			}
+			function add() {
+				input++;
+				update();
+			}
+			function update() {
+				inputContainer.innerText = input;
+				let resultParts = (input / 18)
+					.toString()
+					.split('.');
+
+				if (resultParts.length === 1) {
+					resultElement.innerText = resultParts[0] + '.0';
+				} else {
+					resultElement.innerText = (
+						resultParts[0] + '.' + resultParts[1][0]
+					);
+				}
+			}
+			update();
+		</script>
+	</body>
+</html>
